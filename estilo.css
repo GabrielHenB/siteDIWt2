@@ -1,0 +1,302 @@
+/*  GERAIS - CABECALHO - RODAPE */
+body{
+    background-color: #101010;
+}
+.principal{
+    /*Colore o fundo secundario das linhas*/
+    background-color: #121212;
+}
+
+.cabecalho{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #c41919;
+}
+/*
+.menu .nav{
+    margin-top: 25px;
+}
+
+.menu .nav a{
+    color: white;
+}
+*/
+.menu .menuLista{
+    margin-top: 25px;
+    display: flex;
+}
+.menu .menuLista li{
+    list-style: none;
+    margin-right: 12px;
+}
+.menu .menuLista a{
+    color: white;
+    text-decoration: none;
+}
+
+.pesquisar{
+    margin-top: 25px;
+}
+
+.logo img{
+    
+    width: 150px;
+}
+
+.rodape{
+    margin-top: 20px;
+    background-color: #c41919;
+    color: white;
+    padding: 10px;
+}
+.logo-footer img{ max-width: 150px; max-height: 100px;}
+.texto-footer{
+    text-align: center;
+    margin-top: 30px;
+}
+
+/*     CONTEUDO PRINCIPAL       */
+.negrito{ font-weight: bold; }
+.titulo{
+    text-align: center;
+    color: #ffffff;
+}
+
+/* LANÇAMENTOS  */
+
+.lancamentos {
+    background-color: #151515;
+    padding: 5px;
+}
+.carousel-inner{
+    background-color: #202020;
+    border: 1px solid #202020;
+    border-radius: 5%;
+}
+.carrosel-conteudo{
+    margin: 40px;
+}
+.carrosel-video iframe{
+    width: 100%;
+    height: 100%;
+}
+.carrosel-texto{
+    color: white;
+}
+.carrosel-texto h1{
+    font-size: 1.8em;
+}
+.carrosel-texto p{
+    font-size: 0.8em;
+}
+
+/* CARTAZES ANTES DE VERSAO 2 DO TRABALHO*/
+
+.cartaz{
+    margin-bottom: 10px;
+}
+.cartaz img{
+    width: 100%;
+}
+.dropdown{
+    margin-top: 10px;
+    margin-left: 60%;
+}
+.carregar_mais{
+    margin-left: 80%;
+}
+/* CARTAZES EM DESTAQUE NA VERSAO 2 DO TRABALHO */
+.card-destaques-thumb img{
+    width: 100%;
+}
+.card-destaques-cor{
+    background-color: white;
+    
+    padding: 10px;
+    margin: 5px;
+    
+    
+}
+.card-destaques-detalhes h5{
+    text-align: center;
+}
+.card-destaques-detalhes p{
+    font-size: 0.9em;
+}
+
+/* PESQUISAR TESTE - js cria essa parte */
+.card-da-pesquisa{
+    margin: 5px;
+    padding: 5px;
+    background-color: rgb(255,255,255);
+    color: rgb(0,0,0);
+}
+#sinopse{
+    font-size: 0.9em;
+}
+
+/* AVALIAÇÕES  */
+
+.cartao{
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 4%;
+    padding: 10px;
+    margin: 5px;
+    
+}
+.cartao-imagem{
+    width: 100%;
+}
+.cartao-texto h5{
+    text-align: center;
+}
+.cartao-texto .data{
+    font-size: 0.7em;
+}
+.cartao-texto img{
+    max-width: 100px;
+}
+
+
+/* ENTREVISTAS E MAKING OFF */
+.entrevistas{
+    background-color: #202020;
+    margin-top: 10px;
+    padding: 10px;
+}
+.cartao-entrevista-cor{
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+}
+.cartao-entrevista-cor iframe{
+    width: 100%;
+    height: 100%;
+}
+
+/* NOVIDADES E SOBRE NOS */
+.card_novidades{
+    color: white;
+    background-color: #303030;
+    margin: 5px;
+    padding: 5px;
+}
+.card_novidades_thumb img{
+    width: 100%;
+    
+}
+
+.sobrenos{
+    background-color: #151515;
+    color: white;
+    padding: 5px;
+}
+.sobrenos img{
+    width: 64px;
+}
+
+
+/* MENU MOBILE - GERAIS */
+
+#menuToggle{
+    display: none;
+}
+.menuMobile img{
+    width: 64px;
+    height: 64px;
+}
+.menuMobile{
+    display: none;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 769px){
+
+    /* MENU MOBILE */
+
+    .principal{
+        margin-top: 150px;
+    }
+    .cabecalho{
+        position: fixed;
+        z-index: 20;
+        top: 0px;
+        width: 100%;
+        
+    }
+    .menu{
+        display: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .menuLista{
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        top: 0px;
+        left: 0px;
+        position: fixed;
+        width: 100%;
+        height: 0%; /* ele vira 100% quando checklist é checado */
+        background-color: rgba(0,0,0,0.7);
+        overflow: hidden;
+
+        transition: height 0.3s;
+        -webkit-transition: height 0.3s;
+        -moz-transition: height 0.3s;
+        -o-transition: height 0.3;
+    }
+    .menuLista li{
+        display: block;
+        width: 100%;
+        margin-left: 0px;
+        margin-bottom: 20px;
+
+    }
+    .menuLista li a{
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+    .menuMobile{
+        display: block;
+        top: 0px;
+        right: 5px;
+        position: absolute;
+        z-index: 999;
+
+    }
+    #menuToggle:checked ~ label img:nth-child(2){
+        display: block;
+    }
+    #menuToggle:checked ~ label img:first-child{
+        display: none;
+    }
+    #menuToggle:not(checked) ~ label img:first-child{
+        display: block;
+    }
+    #menuToggle:not(checked) ~ label img:nth-child(2){
+        display: none;
+    }
+    #menuToggle:checked ~ ul{
+        height: 100%;
+    }
+
+    /* FIM DEFINICOES MENU MOBILE */
+
+    /* OUTRAS DEFINICOES */
+
+    .dropdown{
+        margin-top: 16px;
+        margin-left: 0px;
+    }
+    .carregar_mais{
+        margin: 10px 25%;
+    }
+
+    .cartao-texto p:first-of-type{ font-size: 0.7em; }
+
+    
+}
