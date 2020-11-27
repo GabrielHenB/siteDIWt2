@@ -2,12 +2,26 @@
 const BASE_IMAGENS = 'https://image.tmdb.org/t/p/w500';
 const ENDPOINT_BASE = 'https://api.themoviedb.org/3';
 
+
+function VerificaTamanho(textao){
+    //FUNCAO PARA CORTAR TEXTOS GRANDES.
+    if(textao.length > 204){
+        textao = textao.substring(0,204) + '...';
+        
+    }
+    return textao;
+}
+
+
+
+
+
 //FAZ REQUISIÇÃO AJAX E CARREGA O HTML DOS NOVOS FILMES DO EM DESTAQUE
 function MostraFilmesEmDestaque(limitar){
     //REQUISICAO AJAX:
     //usando jquery
     $.ajax({
-        url: ENDPOINT_BASE + '/movie/popular',
+        url: ENDPOINT_BASE + '/tv/top_rated',
         data: {
             api_key: 'fe789a1699cd8320b66a384db6df8e60',
             language: 'pt-BR'
@@ -21,6 +35,7 @@ function MostraFilmesEmDestaque(limitar){
         //Executa quando os dados chegam. O data já e o JSON retornado pelo GET anterior.
         let codigo_html = '';
         let adendo = '';
+        let textado = '';
         let adicionados = 0;
 
         //REMONTAR HTML
@@ -30,8 +45,8 @@ function MostraFilmesEmDestaque(limitar){
             for(j = 0; j < data.results[i].genre_ids.length; j++){
                 
 
-                if(data.results[i].genre_ids[j] == 14 && adicionados < limitar+1){
-
+                if(data.results[i].genre_ids[j] == 16 && adicionados < limitar+1){
+                    textado = VerificaTamanho(data.results[i].overview); //limita o tamanho do texto sinopse.
                     adendo = 'https://image.tmdb.org/t/p/w500'+data.results[i].poster_path;
                     codigo_html += `
                     <div class="col-12 col-sm-12 col-md-6 col-lg-3 card-destaques">
@@ -43,11 +58,11 @@ function MostraFilmesEmDestaque(limitar){
                                 
                                 
                                     <div class="col-12 card-destaques-detalhes">
-                                        <h5>${data.results[i].title}</h5>
-                                        <p><strong>Data de Lançamento: </strong> ${data.results[i].release_date}</p>
+                                        <h5>${data.results[i].name}</h5>
+                                        <p><strong>Data de Lançamento: </strong> ${data.results[i].first_air_date}</p>
                                         <p><strong>Média de Avaliações: </strong> ${data.results[i].vote_average}</p>
-                                        <p><strong>Sinopse: </strong> ${data.results[i].overview} </p>
-                                        <a href="https://www.themoviedb.org/movie/ + ${data.results[i].id}">Leia mais no site</a>
+                                        <p><strong>Sinopse: </strong> ${textado} </p>
+                                        <a href="https://www.themoviedb.org/tv/ + ${data.results[i].id}">Leia mais no site</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +125,7 @@ function CarregarLancamentos(){
                 if(data.results[i].genre_ids[j] == 14){
                     html_lancamentos += `
                         <div class="col-12 col-sd-12 col-md-6 col-lg-2">
-                            <div style="background-color: rgb(255,255,255)">
+                            <div class="card-lancamentos">
                                 <a href="${'https://www.themoviedb.org/movie/'+data.results[i].id}">
                                     <img style="width: 100%" src="${'https://image.tmdb.org/t/p/w500' + data.results[i].poster_path}"/>
                                 </a>
@@ -131,7 +146,7 @@ function CarregarLancamentos(){
 
 function Pesquisa(){
     let html_pesquisar = '';
-
+    let textado = '';
     html_pesquisar = ` 
         <div class="row">
             <div class="col-12">
@@ -156,11 +171,13 @@ function Pesquisa(){
         
     }).done( function(data){
         console.log('Pesquisa completada');
+        
         html_pesquisar = '';
         for(i = 0; i < data.results.length; i++){
             for(j = 0; j < data.results[i].genre_ids.length; j++){
                 //exibe apenas animações(site portal de animações).
                 if(data.results[i].genre_ids[j] == 16){
+                    textado = VerificaTamanho(data.results[i].overview);
                     html_pesquisar += ` 
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                         <div class="card-da-pesquisa">
@@ -173,7 +190,7 @@ function Pesquisa(){
                                     <p><strong>Data:</strong> ${data.results[i].first_air_date}</p>
                                     <p><strong>Tipo:</strong> Episódico(Anime)</p>
                                     <p><strong>Média de Avaliações:</strong> ${data.results[i].vote_average}</p>
-                                    <p id="sinopse"><strong>Sinopse:</strong> ${data.results[i].overview}</p>
+                                    <p id="sinopse"><strong>Sinopse:</strong> ${textado}</p>
                                     <a href="${'https://www.themoviedb.org/tv/'+data.results[i].id}">Leia mais</a>
                                 </div>
                             </div>
@@ -203,6 +220,7 @@ function Pesquisa(){
             for(j = 0; j < data.results[i].genre_ids.length; j++){
                 //exibe apenas filmes de animações(site portal de animações).
                 if(data.results[i].genre_ids[j] == 14){
+                    textado = VerificaTamanho(data.results[i].overview);
                     html_pesquisar += ` 
                     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                         <div class="card-da-pesquisa">
@@ -215,7 +233,7 @@ function Pesquisa(){
                                     <p><strong>Data:</strong> ${data.results[i].release_date}</p>
                                     <p><strong>Tipo:</strong> Filme</p>
                                     <p><strong>Média de Avaliações:</strong> ${data.results[i].vote_average}</p>
-                                    <p id="sinopse"><strong>Sinopse:</strong> ${data.results[i].overview}</p>
+                                    <p id="sinopse"><strong>Sinopse:</strong> ${textado}</p>
                                     <a href="${'https://www.themoviedb.org/movie/'+data.results[i].id}">Leia mais</a>
                                 </div>
                             </div>
