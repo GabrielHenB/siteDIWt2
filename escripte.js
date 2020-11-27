@@ -62,7 +62,7 @@ function MostraFilmesEmDestaque(limitar){
                                         <p><strong>Data de Lançamento: </strong> ${data.results[i].first_air_date}</p>
                                         <p><strong>Média de Avaliações: </strong> ${data.results[i].vote_average}</p>
                                         <p><strong>Sinopse: </strong> ${textado} </p>
-                                        <a href="https://www.themoviedb.org/tv/ + ${data.results[i].id}">Leia mais no site</a>
+                                        <a href="${'https://www.themoviedb.org/tv/' + data.results[i].id}">Leia mais no site</a>
                                     </div>
                                 </div>
                             </div>
