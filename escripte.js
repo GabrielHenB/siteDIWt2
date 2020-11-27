@@ -124,7 +124,7 @@ function CarregarLancamentos(){
             for(j = 0; j < data.results[i].genre_ids.length; j++){
                 if(data.results[i].genre_ids[j] == 14){
                     html_lancamentos += `
-                        <div class="col-12 col-sd-12 col-md-6 col-lg-2">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-2">
                             <div class="card-lancamentos">
                                 <a href="${'https://www.themoviedb.org/movie/'+data.results[i].id}">
                                     <img style="width: 100%" src="${'https://image.tmdb.org/t/p/w500' + data.results[i].poster_path}"/>

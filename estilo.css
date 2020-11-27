@@ -138,6 +138,14 @@ body{
 #sinopse{
     font-size: 0.9em;
 }
+/* ANUNCIOS */
+.box-anuncios p{
+    color: rgb(240,240,240);
+    font-size: 0.9em;
+}
+.box-anuncios span{
+    font-size: 0.8em;
+}
 
 /* AVALIAÇÕES  */
 
