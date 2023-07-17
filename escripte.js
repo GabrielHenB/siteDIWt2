@@ -1,6 +1,7 @@
 
 const BASE_IMAGENS = 'https://image.tmdb.org/t/p/w500';
 const ENDPOINT_BASE = 'https://api.themoviedb.org/3';
+const API_KEY = '#'; //placeholder
 
 
 function VerificaTamanho(textao){
@@ -23,7 +24,7 @@ function MostraFilmesEmDestaque(limitar){
     $.ajax({
         url: ENDPOINT_BASE + '/tv/top_rated',
         data: {
-            api_key: 'fe789a1699cd8320b66a384db6df8e60',
+            api_key: API_KEY,
             language: 'pt-BR'
         }
         /* CASO FOSSE POST. PARA GET NAO PRECISA.
@@ -114,7 +115,7 @@ function CarregarLancamentos(){
     $.ajax({
         url: ENDPOINT_BASE + '/movie/upcoming',
         data: {
-            api_key: 'fe789a1699cd8320b66a384db6df8e60',
+            api_key: API_KEY,
             language: 'pt-BR'
         }
         
@@ -164,7 +165,7 @@ function Pesquisa(){
     $.ajax({
         url: ENDPOINT_BASE + '/search/tv',
         data: {
-            api_key: 'fe789a1699cd8320b66a384db6df8e60',
+            api_key: API_KEY,
             language: 'pt-BR',
             query: busca
         }
@@ -208,7 +209,7 @@ function Pesquisa(){
     $.ajax({
         url: ENDPOINT_BASE + '/search/movie',
         data: {
-            api_key: 'fe789a1699cd8320b66a384db6df8e60',
+            api_key: API_KEY,
             language: 'pt-BR',
             query: busca
         }
