@@ -1,4 +1,4 @@
-# siteDIWt2
+# Nazarick Movies - Front-End Version 2.0
 
 Repository made for the 'Web Interfaces Development' subject from PUC Minas, using HTML, CSS, JavaScript with Bootstrap, jQuery and themoviedb's API.
 
